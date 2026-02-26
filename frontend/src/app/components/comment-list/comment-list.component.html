@@ -1,0 +1,54 @@
+<div class="page-header">
+    <h2>Manage Comments</h2>
+    <p>Moderate user comments on your blog posts</p>
+</div>
+
+<div class="card">
+    <table class="table" *ngIf="!loading && comments.length > 0">
+        <thead>
+            <tr>
+                <th>Blog Post</th>
+                <th>User</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comment of comments">
+                <td><small>{{ comment.blog_title }}</small></td>
+                <td>
+                    <strong>{{ comment.username }}</strong><br>
+                    <small>{{ comment.email }}</small>
+                </td>
+                <td>
+                    <p class="comment-text">{{ comment.comment }}</p>
+                </td>
+                <td>
+                    <span class="status-badge" [ngClass]="'status-' + comment.status">
+                        {{ comment.status }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-btns" *ngIf="comment.status === 'pending'">
+                        <button (click)="updateStatus(comment.id, 'published')"
+                            class="btn-sm btn-success">Approve</button>
+                        <button (click)="updateStatus(comment.id, 'declined')"
+                            class="btn-sm btn-danger">Decline</button>
+                    </div>
+                    <div class="action-btns" *ngIf="comment.status !== 'pending'">
+                        <button (click)="deleteComment(comment.id)" class="btn-sm btn-outline">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="loading" class="text-center pad-2">
+        Loading comments...
+    </div>
+
+    <div *ngIf="!loading && comments.length === 0" class="text-center pad-2">
+        No comments to display.
+    </div>
+</div>

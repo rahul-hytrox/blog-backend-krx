@@ -1,0 +1,60 @@
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    transition: var(--theme-transition);
+}
+
+.blogs-icon {
+    color: #3b82f6;
+}
+
+.comments-icon {
+    color: #f59e0b;
+}
+
+.users-icon {
+    color: #10b981;
+}
+
+.visitor-icon {
+    color: #8b5cf6;
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.quick-actions h3 {
+    margin-top: 0;
+}
+
+.actions-buttons {
+    display: flex;
+    gap: 1rem;
+}

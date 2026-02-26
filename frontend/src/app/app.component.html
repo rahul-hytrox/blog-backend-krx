@@ -1,0 +1,44 @@
+<div [class.admin-layout]="isLoggedIn">
+    <aside *ngIf="isLoggedIn" class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">Blog<span>Admin</span></h1>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a routerLink="/admin/dashboard" routerLinkActive="active">
+                        <span class="nav-icon">📊</span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/admin/blogs" routerLinkActive="active">
+                        <span class="nav-icon">📝</span> Blogs
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/admin/comments" routerLinkActive="active">
+                        <span class="nav-icon">💬</span> Comments
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/admin/users" routerLinkActive="active">
+                        <span class="nav-icon">👤</span> Admin Users
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button (click)="themeService.toggleTheme()" class="btn btn-theme">
+                <span *ngIf="themeService.currentTheme === 'dark'">☀️ Light Mode</span>
+                <span *ngIf="themeService.currentTheme === 'light'">🌙 Dark Mode</span>
+            </button>
+            <button (click)="logout()" class="btn btn-outline">Logout</button>
+        </div>
+    </aside>
+
+    <main [class.main-content]="isLoggedIn">
+        <router-outlet></router-outlet>
+    </main>
+</div>

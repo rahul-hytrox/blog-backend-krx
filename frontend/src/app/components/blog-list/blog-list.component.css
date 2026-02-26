@@ -1,0 +1,47 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.thumb {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.action-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-icon {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background: var(--bg-main);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-icon-danger:hover {
+    background: var(--danger-color);
+}
+
+.pad-2 {
+    padding: 2rem;
+}
+
+.text-center {
+    text-align: center;
+    color: var(--text-secondary);
+}

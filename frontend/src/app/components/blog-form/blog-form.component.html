@@ -1,0 +1,40 @@
+<div class="page-header">
+    <h2>{{ editMode ? 'Edit Blog Post' : 'Create New Blog' }}</h2>
+</div>
+
+<div class="card">
+    <form (ngSubmit)="onSubmit()" #blogForm="ngForm">
+        <div class="form-group">
+            <label for="title">Blog Title</label>
+            <input type="text" id="title" name="title" [(ngModel)]="blog.title" required
+                placeholder="Enter interesting title">
+        </div>
+
+        <div class="form-group quill-container">
+            <label for="content">Blog Content</label>
+            <quill-editor [(ngModel)]="blog.content" name="content" [modules]="quillConfig"
+                placeholder="Write your amazing story here..." class="custom-quill"></quill-editor>
+        </div>
+
+        <div class="form-group">
+            <label>Feature Image</label>
+            <div class="file-upload">
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" id="fileInput">
+                <label for="fileInput" class="file-label">
+                    <span>Choose an image</span>
+                </label>
+            </div>
+
+            <div class="preview-container" *ngIf="previewUrl">
+                <img [src]="previewUrl" alt="Preview" class="preview-img">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn-outline" routerLink="/admin/blogs">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!blogForm.valid || loading">
+                {{ loading ? 'Saving...' : (editMode ? 'Update Blog' : 'Publish Blog') }}
+            </button>
+        </div>
+    </form>
+</div>

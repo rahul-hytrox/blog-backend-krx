@@ -1,0 +1,44 @@
+<div class="page-header">
+    <div>
+        <h2>Manage Blogs</h2>
+        <p>View and manage all your blog posts</p>
+    </div>
+    <a routerLink="/admin/blogs/new" class="btn btn-primary">Create New Blog</a>
+</div>
+
+<div class="card">
+    <table class="table" *ngIf="!loading && blogs.length > 0">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Published Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let blog of blogs">
+                <td>
+                    <img [src]="blog.image_url ? imageBaseUrl + blog.image_url : 'assets/placeholder.jpg'"
+                        alt="blog thumb" class="thumb">
+                </td>
+                <td><strong>{{ blog.title }}</strong></td>
+                <td>{{ blog.created_at | date:'mediumDate' }}</td>
+                <td>
+                    <div class="action-btns">
+                        <a [routerLink]="['/admin/blogs/edit', blog.id]" class="btn-icon">Edit</a>
+                        <button (click)="deleteBlog(blog.id)" class="btn-icon btn-icon-danger">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="loading" class="text-center pad-2">
+        Loading blogs...
+    </div>
+
+    <div *ngIf="!loading && blogs.length === 0" class="text-center pad-2">
+        No blogs found. Create your first blog post!
+    </div>
+</div>

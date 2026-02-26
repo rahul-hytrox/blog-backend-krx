@@ -1,0 +1,46 @@
+<div class="dashboard-header">
+    <h2>Welcome to Admin Dashboard</h2>
+    <p>Overview of your blog's performance</p>
+</div>
+
+<div class="stats-grid">
+    <div class="card stat-card">
+        <div class="stat-icon blogs-icon">📝</div>
+        <div class="stat-info">
+            <h3>Total Blogs</h3>
+            <div class="stat-value">{{ stats.totalBlogs }}</div>
+        </div>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon comments-icon">💬</div>
+        <div class="stat-info">
+            <h3>Pending Comments</h3>
+            <div class="stat-value">{{ stats.pendingComments }}</div>
+        </div>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon users-icon">👥</div>
+        <div class="stat-info">
+            <h3>Total Comments</h3>
+            <div class="stat-value">{{ stats.totalComments }}</div>
+        </div>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon visitor-icon">👁️</div>
+        <div class="stat-info">
+            <h3>Total Visitors</h3>
+            <div class="stat-value">{{ stats.totalVisitors }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="quick-actions card">
+    <h3>Quick Actions</h3>
+    <div class="actions-buttons">
+        <a routerLink="/admin/blogs/new" class="btn btn-primary">Create New Blog</a>
+        <a routerLink="/admin/comments" class="btn btn-outline">Review Comments</a>
+    </div>
+</div>
